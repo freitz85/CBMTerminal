@@ -1,0 +1,21 @@
+##{0:0:0}C:\Users\Blue Meanie\Dropbox\Privat\Commodore\ReadUserPort\main.asm
+
+*=$c000
+
+portA = $dd00
+ddr_portA = $dd02
+portB = $dd01
+ddr_portB = $dd03
+icr = $dd0d
+chrout = $ffd2
+
+start
+ lda #$00
+ sta ddr_portb
+main.asm_10001 lda icr
+ and #$10
+ beq main.asm_10001
+ lda portB
+ jsr chrout
+ jmp main.asm_10001
+
